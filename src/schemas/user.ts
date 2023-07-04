@@ -18,6 +18,10 @@ const schema = new Schema<IUser>(
       type: String,
       required: true,
     },
+    tasks: {
+      type: [{ ref: "tasks", type: Schema.Types.ObjectId }],
+      default: null,
+    },
   },
   { timestamps: true }
 );
