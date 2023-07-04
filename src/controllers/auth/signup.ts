@@ -28,14 +28,14 @@ export async function signup(request: Request, response: Response) {
       password: hashedPassword,
     });
 
-    const token = helpers.jwt.getJWT({
-      _id: String(created._id),
-      email: created.email,
-    });
+    const token = helpers.jwt.getJWT(
+      { _id: String(created._id), email: created.email },
+      { expiresIn: "24h" }
+    );
 
     return response
       .status(201)
-      .json({ message: "ok", data: { _id: created._id, token } });
+      .json({ message: "ok", data: { ...created._doc, token } });
   } catch (error) {
     return response.status(500).json({ message: (error as Error).message });
   }

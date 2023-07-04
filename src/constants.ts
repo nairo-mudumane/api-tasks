@@ -12,11 +12,18 @@ const userAlreadyRegistered =
 const validPasswordRegex =
   /^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
 
+const unknownOriginOrUser = "não autorizado: usuário ou origem desconhecidos";
+
+const invalidOrExpiredToken =
+  "não autorizado: origem desconhecida ou estrutura de token inválida ou expirada";
+
 export const DEFAULT_ERROR_MESSAGES = {
   noDataProvided,
   invalidEmail,
   invalidPassword,
   userAlreadyRegistered,
+  unknownOriginOrUser,
+  invalidOrExpiredToken,
 };
 
 export const SERVER_CONSTANTS = { validPasswordRegex };

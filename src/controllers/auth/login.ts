@@ -19,7 +19,7 @@ export async function login(request: Request, response: Response) {
 
     user.password = undefined as unknown as string;
     const data = { _id: String(user._id), email: user.email };
-    const token = helpers.jwt.getJWT(data, { expiresIn: "4h" });
+    const token = helpers.jwt.getJWT(data, { expiresIn: "24h" });
 
     return response
       .status(200)
