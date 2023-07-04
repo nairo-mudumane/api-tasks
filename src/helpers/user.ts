@@ -1,5 +1,5 @@
 import { z as zod } from "zod";
-import { INewUser } from "../@types";
+import { INewUser, IUserLogin } from "../@types";
 import { DEFAULT_ERROR_MESSAGES, SERVER_CONSTANTS } from "../constants";
 
 const nameErrors = {
