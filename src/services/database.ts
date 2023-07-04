@@ -10,7 +10,9 @@ export async function connectToDatabase(): Promise<void> {
 
   try {
     if (uri) {
+      mongoose.set("strict", true);
       mongoose.set("debug", process.env.NODE_ENV === "development");
+
       await mongoose.connect(String(uri), {
         dbName,
         retryReads: true,

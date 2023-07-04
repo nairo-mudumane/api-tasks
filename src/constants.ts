@@ -1,0 +1,22 @@
+const noDataProvided = "No required data provided";
+
+const invalidEmail =
+  "E-mail inválido. o e-mail deve seguir o seguinte formato: exemplo@email.com";
+
+const invalidPassword =
+  "formato de senha inválido. A senha deve conter pelo menos 8 caracteres, uma letra maiúscula, um número e um caractere especial";
+
+const userAlreadyRegistered =
+  "dados já sendo usados. Encontramos um usuário com esses dados, tente recuperar a senha.";
+
+const validPasswordRegex =
+  /^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
+
+export const DEFAULT_ERROR_MESSAGES = {
+  noDataProvided,
+  invalidEmail,
+  invalidPassword,
+  userAlreadyRegistered,
+};
+
+export const SERVER_CONSTANTS = { validPasswordRegex };
