@@ -11,7 +11,7 @@
 
 ## Brief Note
 
-this api was developed as part of the job application for NodeJS Developer at [@Niteki](https://niteki.co.mz/corporate) but you can use it for other purposes if you so wish!
+This api was developed as part of the job application for NodeJS Developer at [@Niteki](https://niteki.co.mz/corporate) but you can use it for other purposes if you so wish!
 
 ## Requirements
 
@@ -19,7 +19,7 @@ To run this API, you need to have installed [Nodejs v18 (or above)](https://node
 
 # Getting Started - Server setup
 
-> You can skip installation steps and use [niteki-api-tasks.onrender.com](https://niteki-api-tasks.onrender.com) as base url.
+> Note: You can skip installation steps and use [niteki-api-tasks.onrender.com](https://niteki-api-tasks.onrender.com) as base url.
 
 1. Clone this repository using the command:
 
@@ -61,8 +61,8 @@ http://localhost:{port}/accounts/auth/signup/
 // Payload
 {
   "name": string,
-	"email": string,
-	"password": string
+  "email": string,
+  "password": string,
 }
 ```
 
@@ -75,8 +75,8 @@ POST
 http://localhost:{port}/accounts/auth/login/
 // Payload
 {
-	"email": string,
-	"password": string
+  "email": string,
+  "password": string,
 }
 ```
 
