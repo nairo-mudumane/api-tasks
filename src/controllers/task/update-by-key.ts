@@ -26,8 +26,12 @@ export async function updateByKey(request: IAuthRequest, response: Response) {
         .json({ message: DEFAULT_ERROR_MESSAGES.unknownOriginOrUser });
 
     if (isValidObjectId(params.key))
-      task = await taskModel.findById(params.key);
-    else task = await taskModel.findOne({ name: decodeURI(params.key) });
+      task = await taskModel.findOne({ _id: params.key, createdBy: user._id });
+    else
+      task = await taskModel.findOne({
+        name: decodeURI(params.key),
+        createdBy: user._id,
+      });
 
     if (!task)
       return response

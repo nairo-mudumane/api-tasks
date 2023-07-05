@@ -14,7 +14,6 @@ export async function signup(request: Request, response: Response) {
     const exists = await userModel.findOne({ email: payload.email });
     if (exists) throw new Error(DEFAULT_ERROR_MESSAGES.userAlreadyRegistered);
   } catch (error) {
-    console.error(error);
     return response.status(400).json({ message: (error as Error).message });
   }
 
@@ -27,6 +26,9 @@ export async function signup(request: Request, response: Response) {
       email,
       password: hashedPassword,
     });
+
+    created.password = undefined as unknown as string;
+    created.tasks = undefined as unknown as Array<string>;
 
     const token = helpers.jwt.getJWT(
       { _id: String(created._id), email: created.email },

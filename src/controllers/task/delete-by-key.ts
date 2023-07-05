@@ -23,8 +23,13 @@ export async function deleteByKey(request: IAuthRequest, response: Response) {
       for (const key of reqTasksKeys) {
         let task: ITask | null = null;
 
-        if (isValidObjectId(key)) task = await taskModel.findById(key);
-        else task = await taskModel.findOne({ name: decodeURI(key) });
+        if (isValidObjectId(key))
+          task = await taskModel.findOne({ _id: key, createdBy: user._id });
+        else
+          task = await taskModel.findOne({
+            name: decodeURI(key),
+            createdBy: user._id,
+          });
 
         if (!task)
           throw new Error(`a tarefa na posição ${index} não foi encontrada`);
@@ -36,8 +41,15 @@ export async function deleteByKey(request: IAuthRequest, response: Response) {
       let task: ITask | null = null;
 
       if (isValidObjectId(reqTasksKeys))
-        task = await taskModel.findById(reqTasksKeys);
-      else task = await taskModel.findOne({ name: decodeURI(reqTasksKeys) });
+        task = await taskModel.findOne({
+          _id: reqTasksKeys,
+          createdBy: user._id,
+        });
+      else
+        task = await taskModel.findOne({
+          name: decodeURI(reqTasksKeys),
+          createdBy: user._id,
+        });
 
       if (!task) throw new Error(DEFAULT_ERROR_MESSAGES.notFound);
       else tasksKeys.push(String(task._id));

@@ -46,8 +46,10 @@ export async function getAll(request: IAuthRequest, response: Response) {
 
   try {
     if (Object.keys(filters).length > 0)
-      tasks = await taskModel.find(filters).sort(sort);
-    else tasks = await taskModel.find().sort(sort);
+      tasks = await taskModel
+        .find({ ...filters, createdBy: user._id })
+        .sort(sort);
+    else tasks = await taskModel.find({ createdBy: user._id }).sort(sort);
 
     return response.status(200).json({ message: "ok", data: tasks });
   } catch (error) {
