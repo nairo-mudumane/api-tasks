@@ -1,7 +1,7 @@
 {
   "name": "api-tasks",
   "description": "Restfull API developed as part of the application for the position of back-end developer at @Niteki",
-  "version": "1.0.0",
+  "version": "1.0.3",
   "main": "/dist/server.js",
   "repository": "git@github.com:nairo-mudumane/apit-tasks.git",
   "author": "nairo-mudumane <nairomudumane@outlook.com>",
