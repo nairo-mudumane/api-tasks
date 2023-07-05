@@ -5,6 +5,7 @@ dotenv.config();
 const uri = process.env.DB_URL;
 const dbName = process.env.DB_NAME;
 
+/**Opens Mongoose's default connection to MongoDB */
 export async function connectToDatabase(): Promise<void> {
   console.log("connecting to database...");
 

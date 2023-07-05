@@ -1,6 +1,10 @@
 import { ZodError } from "zod";
 
-function throwNewZodError(error: ZodError) {
+/**
+ * throws new error, with a formatted message
+ * @param error a valid zod error object
+ */
+function throwNewZodError(error: ZodError): void {
   const { issues } = error;
   const { path, code, message } = issues[0];
   const errorMessage = `[${path}]_(${code.toUpperCase()}): ${message}`;

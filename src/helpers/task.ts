@@ -30,6 +30,10 @@ const isDoneErrors = {
     "o campo 'isDone' tem um valor não suportado. Esperado 'true' ou 'false'",
 };
 
+/**
+ * checks provided data to create a new task
+ * @param data data to check
+ */
 function create(data: INewTask): void {
   try {
     const schema = zod.object({
@@ -53,6 +57,10 @@ function create(data: INewTask): void {
   }
 }
 
+/**
+ * checks provided data to updated a existing task
+ * @param data data to check
+ */
 function update(data: IUpdateTask): void {
   try {
     if (Object.keys(data).length === 0)
@@ -94,6 +102,10 @@ function update(data: IUpdateTask): void {
   }
 }
 
+/**
+ * checks provided data to mark a existing task
+ * @param data data to check
+ */
 function markAsDone(data: Pick<IUpdateTask, "isDone">): void {
   try {
     const schema = zod.object({ isDone: zod.boolean(isDoneErrors) });

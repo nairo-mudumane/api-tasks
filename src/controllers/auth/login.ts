@@ -1,5 +1,4 @@
 import { Request, Response } from "express";
-import bcrypt from "bcryptjs";
 import { IUserLogin } from "../../@types";
 import { userModel } from "../../schemas";
 import helpers from "../../helpers";
@@ -14,7 +13,7 @@ export async function login(request: Request, response: Response) {
     const user = await userModel.findOne({ email }).select("+password");
     if (!user) throw new Error(errorMessage);
 
-    if (!(await bcrypt.compare(password, user.password)))
+    if (!(await helpers.password.match(password, user.password)))
       throw new Error(errorMessage);
 
     user.password = undefined as unknown as string;

@@ -19,6 +19,10 @@ const passwordErrors = {
   invalid_type_error: DEFAULT_ERROR_MESSAGES.invalidPassword,
 };
 
+/**
+ * checks provided data to create a new user
+ * @param data data to check
+ */
 function signup(data: INewUser): void {
   try {
     const schema = zod.object(

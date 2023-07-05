@@ -1,5 +1,4 @@
 import { Request, Response } from "express";
-import bcrypt from "bcryptjs";
 import { INewUser } from "../../@types";
 import helpers from "../../helpers";
 import { userModel } from "../../schemas";
@@ -19,7 +18,7 @@ export async function signup(request: Request, response: Response) {
 
   try {
     const { email, name, password } = payload;
-    const hashedPassword = await bcrypt.hash(password!, 10);
+    const hashedPassword = await helpers.password.hash(password!);
 
     const created = await userModel.create({
       name,
