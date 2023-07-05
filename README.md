@@ -55,11 +55,11 @@ yarn start
 ### New account
 
 ```js
-# Method:
+// Method:
 POST
-# URL
+// URL
 http://localhost:{port}/accounts/auth/signup/
-# Payload
+// Payload
 {
 	"name": string,
 	"email": string,
@@ -70,11 +70,11 @@ http://localhost:{port}/accounts/auth/signup/
 ### Login to an existing account
 
 ```js
-# Method:
+// Method:
 POST
-# URL
+// URL
 http://localhost:{port}/accounts/auth/login/
-# Payload
+// Payload
 {
 	"email": string,
 	"password": string
