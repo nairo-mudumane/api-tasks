@@ -1,6 +1,7 @@
 import { z as zod } from "zod";
+import { INewTask, IUpdateTask } from "../@types";
+import helpers from ".";
 import { DEFAULT_ERROR_MESSAGES } from "../constants";
-import { INewTask } from "../@types";
 
 const nameErrors = {
   required_error: "o nome é obrigatório",
@@ -42,12 +43,49 @@ function create(data: INewTask): void {
 
     schema.parse(data);
   } catch (error) {
-    const { issues } = error as zod.ZodError;
-    const { path, code, message } = issues[0];
-    const errorMessage = `[${path}]_(${code.toUpperCase()}): ${message}`;
-
-    throw new Error(errorMessage);
+    helpers.mongo.throwNewZodError(error as zod.ZodError);
   }
 }
 
-export default { create };
+function update(data: IUpdateTask): void {
+  try {
+    if (Object.keys(data).length === 0)
+      throw new Error(DEFAULT_ERROR_MESSAGES.noDataProvided);
+
+    const allowedFields = ["category", "completeAt", "description", "name"];
+
+    for (const key of Object.keys(data)) {
+      if (!allowedFields.includes(key))
+        throw new Error(`não foi possível atualizar o campo '${key}'`);
+    }
+  } catch (error) {
+    throw error;
+  }
+
+  try {
+    const schema = zod.object({
+      name: zod
+        .string(nameErrors)
+        .min(3, nameErrors.invalid_type_error)
+        .nullish(),
+      category: zod
+        .string(categoryErrors)
+        .min(3, categoryErrors.invalid_type_error)
+        .nullish(),
+      completeAt: zod
+        .string(dateErrors)
+        .datetime({ message: dateErrors.invalid_type_error })
+        .nullish(),
+      description: zod
+        .string(descriptionErrors)
+        .min(3, descriptionErrors.invalid_type_error)
+        .nullish(),
+    });
+
+    schema.parse(data);
+  } catch (error) {
+    helpers.mongo.throwNewZodError(error as zod.ZodError);
+  }
+}
+
+export default { create, update };

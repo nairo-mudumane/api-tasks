@@ -1,6 +1,7 @@
 import { z as zod } from "zod";
 import { INewUser } from "../@types";
 import { DEFAULT_ERROR_MESSAGES, SERVER_CONSTANTS } from "../constants";
+import helpers from ".";
 
 const nameErrors = {
   required_error: "o nome é obrigatório",
@@ -39,11 +40,7 @@ function signup(data: INewUser): void {
 
     schema.parse(data);
   } catch (error) {
-    const { issues } = error as zod.ZodError;
-    const { path, code, message } = issues[0];
-    const errorMessage = `[${path}]_(${code.toUpperCase()}): ${message}`;
-
-    throw new Error(errorMessage);
+    helpers.mongo.throwNewZodError(error as zod.ZodError);
   }
 }
 
