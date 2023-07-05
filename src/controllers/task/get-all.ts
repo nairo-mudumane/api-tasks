@@ -11,7 +11,7 @@ export async function getAll(request: IAuthRequest, response: Response) {
 
   let filters: { [key: string]: string } = {};
   const acceptedFilters = ["category", "is_done"];
-  const sort = { completeAt: -1, createdAt: -1 } as ISortOder;
+  const sort = { isDone: 1, completeAt: -1, createdAt: -1 } as ISortOder;
 
   const reqUser = request.user;
   const query = request.query as Partial<IQuery>;
