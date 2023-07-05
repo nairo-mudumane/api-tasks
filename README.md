@@ -1,15 +1,12 @@
-<div  align="center">
+<div align="center">
 
 <h1>Tasks Server</h1>
 
 <p>Restfull API developed as part of the application for the position of back-end developer at <a  href="https://niteki.co.mz/corporate"  target="_blank">@Niteki</a></p>
 
 <div>
-
-<img  src="https://img.shields.io/badge/version-1.3.0-blue.svg"  alt="Version 1.0.3">
-
+<img src="https://img.shields.io/badge/version-1.3.0-blue.svg"  alt="Version 1.0.3" />
 </div>
-
 </div>
 
 ## Brief Note
@@ -21,6 +18,8 @@ this api was developed as part of the job application for NodeJS Developer at [@
 To run this API, you need to have installed [Nodejs v18 (or above)](https://nodejs.org/), [yarn v1.22 (or above)](https://yarnpkg.com/) or any other Node.js dependency manager
 
 # Getting Started - Server setup
+
+> You can skip installation steps and use [niteki-api-tasks.onrender.com](https://niteki-api-tasks.onrender.com) as base url.
 
 1. Clone this repository using the command:
 
@@ -61,7 +60,7 @@ POST
 http://localhost:{port}/accounts/auth/signup/
 // Payload
 {
-	"name": string,
+  "name": string,
 	"email": string,
 	"password": string
 }
