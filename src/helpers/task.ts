@@ -24,6 +24,12 @@ const dateErrors = {
   invalid_type_error: "o formato de data não é suportado",
 };
 
+const isDoneErrors = {
+  required_error: "o campo 'isDone' é obrigatório",
+  invalid_type_error:
+    "o campo 'isDone' tem um valor não suportado. Esperado 'true' ou 'false'",
+};
+
 function create(data: INewTask): void {
   try {
     const schema = zod.object({
@@ -88,4 +94,14 @@ function update(data: IUpdateTask): void {
   }
 }
 
-export default { create, update };
+function markAsDone(data: Pick<IUpdateTask, "isDone">): void {
+  try {
+    const schema = zod.object({ isDone: zod.boolean(isDoneErrors) });
+
+    schema.parse(data);
+  } catch (error) {
+    helpers.mongo.throwNewZodError(error as zod.ZodError);
+  }
+}
+
+export default { create, update, markAsDone };
