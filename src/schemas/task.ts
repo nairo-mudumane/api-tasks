@@ -1,5 +1,5 @@
-import { Schema } from "mongoose";
-import { ITask } from "../@types/task";
+import { Schema, model } from "mongoose";
+import { ITask } from "../@types";
 
 const schema = new Schema<ITask>(
   {
@@ -12,6 +12,7 @@ const schema = new Schema<ITask>(
       required: true,
     },
     createdBy: {
+      select: false,
       ref: "users",
       required: true,
       type: Schema.Types.ObjectId,
@@ -31,3 +32,5 @@ const schema = new Schema<ITask>(
   },
   { timestamps: true }
 );
+
+export const taskModel = model<ITask>("tasks", schema);

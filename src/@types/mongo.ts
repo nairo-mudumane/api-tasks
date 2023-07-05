@@ -1,4 +1,4 @@
-import { ObjectId } from "mongoose";
+import { ObjectId, SortOrder } from "mongoose";
 
 export type IMongoData = {
   _id: ObjectId;
@@ -7,3 +7,5 @@ export type IMongoData = {
 };
 
 export type IOmittedMongoData = "_id" | "createdAt" | "updatedAt";
+
+export type ISortOder = { [key: string]: SortOrder | { $meta: "textScore" } };

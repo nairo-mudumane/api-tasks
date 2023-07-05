@@ -6,5 +6,7 @@ const { Private } = new AuthFirewall();
 const router = Router();
 
 router.post("/", Private, controller.create);
+router.get("/", Private, controller.getAll);
+router.get("/:key", Private, controller.getById);
 
 export { router as TasksRoutes };

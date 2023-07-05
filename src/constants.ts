@@ -17,6 +17,8 @@ const unknownOriginOrUser = "não autorizado: usuário ou origem desconhecidos";
 const invalidOrExpiredToken =
   "não autorizado: origem desconhecida ou estrutura de token inválida ou expirada";
 
+const notFound = "não encontrado";
+
 export const DEFAULT_ERROR_MESSAGES = {
   noDataProvided,
   invalidEmail,
@@ -24,6 +26,7 @@ export const DEFAULT_ERROR_MESSAGES = {
   userAlreadyRegistered,
   unknownOriginOrUser,
   invalidOrExpiredToken,
+  notFound,
 };
 
 export const SERVER_CONSTANTS = { validPasswordRegex };

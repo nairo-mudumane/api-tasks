@@ -21,6 +21,7 @@ const schema = new Schema<IUser>(
     tasks: {
       type: [{ ref: "tasks", type: Schema.Types.ObjectId }],
       default: null,
+      select: false,
     },
   },
   { timestamps: true }
