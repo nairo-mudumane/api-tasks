@@ -1,14 +1,15 @@
 {
   "name": "api-tasks",
   "description": "Restfull API developed as part of the application for the position of back-end developer at @Niteki",
-  "version": "1.0.3",
+  "version": "1.0.6",
   "main": "/dist/server.js",
   "repository": "git@github.com:nairo-mudumane/apit-tasks.git",
   "author": "nairo-mudumane <nairomudumane@outlook.com>",
   "license": "MIT",
   "engines": {
-    "node": ">=18",
-    "yarn": ">=1.22"
+    "node": ">=16",
+    "yarn": ">=1.22",
+    "npm": ">=8"
   },
   "scripts": {
     "start": "node ./dist/server.js",
