@@ -13,7 +13,7 @@
   },
   "scripts": {
     "start": "node ./dist/server.js",
-    "build": "npx tsc",
+    "build": "tsc",
     "dev": "tsx watch ./src/server.ts"
   },
   "dependencies": {
