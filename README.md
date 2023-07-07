@@ -37,7 +37,15 @@ yarn install
 
 ```
 
-3. finally run the http server initialization command
+3. Proceed with compiling the code for the production environment using the following command
+
+```bash
+
+yarn build
+
+```
+
+4. finally run the http server initialization command
 
 ```bash
 
