@@ -7,9 +7,9 @@
   "author": "nairo-mudumane <nairomudumane@outlook.com>",
   "license": "MIT",
   "engines": {
-    "node": ">=16",
-    "yarn": ">=1.22",
-    "npm": ">=8"
+    "node": "16.18.0",
+    "yarn": "1.22.19",
+    "npm": "8.19.2"
   },
   "scripts": {
     "start": "node ./dist/server.js",
