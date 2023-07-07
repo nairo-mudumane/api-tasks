@@ -48,7 +48,7 @@ export class AuthFirewall {
       if (err)
         return response
           .status(AuthFirewall.errorStatusCode)
-          .json({ message: err.message });
+          .json({ message: AuthFirewall.unknownOrigin });
 
       if (!decoded)
         return response
