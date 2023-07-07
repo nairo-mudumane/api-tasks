@@ -10,8 +10,8 @@ const server = express();
 
 server.use(cors());
 server.use(express.json());
-ServerRoutes(server);
 
-connectToDatabase().then(() =>
-  server.listen(port, () => console.log("server running"))
-);
+connectToDatabase().then(() => {
+  ServerRoutes(server);
+  server.listen(port, () => console.log("server running"));
+});
